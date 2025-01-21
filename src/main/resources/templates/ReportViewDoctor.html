@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Appointment Report</title>
+    <link rel="stylesheet"  th:href="@{/ReportDoctorstyles.css}">
+</head>
+<body>
+<div class="nav" th:replace="~{${Doctornavbar}}"> </div>
+<div class="contain">
+<h1>Appointment Report:</h1>
+<p><strong>Patient Name:</strong> <span th:text="${appointment.patient.user.fullName}"></span></p>
+    <p><strong>Doctor Name:</strong> <span th:text="${appointment.doctor.user.fullName}"></span></p>
+<p><strong>Date:</strong> <span th:text="${appointment.date}"></span></p>
+<p><strong>Time:</strong> <span th:text="${appointment.bookedTime}"></span></p>
+<p><strong>Problem Description:</strong> <span th:text="${appointment.description}"></span></p>
+<p><strong>Status:</strong> <span th:text="${appointment.status}"></span></p>
+    <p><strong>Results:</strong> <span th:text="${appointment.results}"></span></p>
+    <p><strong>Feedback:</strong> <span th:text="${appointment.review}"></span></p>
+
+</div>
+
+
+<div class="report-update">
+
+    <div th:if="${#strings.equals(appointment.status.name(), 'APPROVED') }">
+        <form th:action="@{/appointment/UpdateViewReport/{userId}/{appointmentId}(userId=${user.userId}, appointmentId=${appointment.appointment_id})}"
+          method="post">
+        <label for="report">Update Report:</label>
+        <textarea id="report" name="report" rows="6" placeholder="Enter updated report here..."></textarea>
+        <button type="submit" id="updateReportBtn">Update Report</button>
+    </form>
+</div>
+</div>
+
+
+<!-- Success Popup -->
+<div id="popupOverlay" class="overlay hidden">
+    <div class="popup">
+        <p>Report updated successfully!</p>
+        <button id="closePopupBtn">Okay</button>
+    </div>
+</div>
+
+<script th:src="@{/JavaScript/DoctorReport.js}"></script>
+</body>
+</html>

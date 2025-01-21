@@ -1,0 +1,231 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* Navbar placeholder */
+div[th\\:replace] {
+    margin-bottom: 20px;  /* Prevent content from touching navbar */
+}
+
+/* Page title */
+h2 {
+    text-align: center;
+    font-size: 28px;
+    color: #343a40;
+    margin-top:30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+/* Doctor lists container */
+.lists {
+    max-width: 900px;
+    margin-left: 30%;
+      margin-top: 5%;
+    padding: 0 15px;     /* Add padding to prevent content from touching edges */
+}
+
+/* Grid container for doctor cards */
+.doctor-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* Two cards per row */
+    gap: 70px;
+    justify-items: center;  /* Center items horizontally */
+    align-items: stretch;  /* Ensure cards are stretched to the container height */
+}
+
+/* No data message */
+.doctor-section p {
+    text-align: center;
+    font-size: 16px;
+    color: #6c757d;
+}
+
+/* Individual doctor card */
+.doctor-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    margin-left: 30%;
+    margin-right:40%;
+    max-width: 350px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect on cards */
+.doctor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile image styling */
+.profile-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 2px solid #6c757d;
+}
+
+/* Doctor details */
+.doctor-card p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #343a40;
+    text-align: left;
+}
+
+/* Strong labels */
+.doctor-card p strong {
+    color: #495057;
+}
+
+/* View button styling */
+.view {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff; /* Primary blue color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    gap: 8px;
+}
+
+.view i {
+    font-size: 16px;
+}
+
+/* Hover effect */
+.view:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-3px); /* Subtle lift effect */
+}
+
+/* Focus effect */
+.view:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.4); /* Blue focus outline */
+}
+
+/* Disabled state */
+.view:disabled {
+    background-color: #6c757d; /* Gray color for disabled */
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+
+/* Update button styling */
+.update {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #28a745; /* Green color for update action */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    gap: 8px;
+}
+
+.update i {
+    font-size: 16px;
+}
+
+/* Hover effect */
+.update:hover {
+    background-color: #218838; /* Darker green on hover */
+    transform: translateY(-3px); /* Subtle lift effect */
+}
+
+/* Focus effect */
+.update:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.4); /* Green focus outline */
+}
+
+/* Disabled state */
+.update:disabled {
+    background-color: #6c757d; /* Gray color for disabled state */
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #3f51b5;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .profile-image {
+    margin-bottom: 15px;
+}
+
+.navbar .profile-image img {
+    width: 150px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+.navbar .Name h1 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+}
+
+.navbar .nav-links {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.navbar .nav-links li {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.navbar .nav-links li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    text-align: left;
+    transition: background 0.3s ease;
+}
+
+.navbar .nav-links li a:hover {
+    background-color: #5c6bc0;
+    border-radius: 5px;
+}

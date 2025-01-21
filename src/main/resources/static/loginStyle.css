@@ -1,0 +1,199 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the login form */
+.login-container {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Form heading */
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #4CAF50;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Labels */
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Input fields */
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Checkbox and Terms Alignment */
+.form-group.terms {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.form-group input[type="checkbox"] {
+    margin: 0;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.form-group a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-group a:hover {
+    text-decoration: underline;
+}
+
+/* Login button */
+.login-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: transform 0.2s, background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.login-button:active {
+    transform: scale(0.95);
+}
+
+/* Sign Up button */
+.signup-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    transition: transform 0.2s, background-color 0.3s ease;
+}
+
+.signup-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.signup-button:active {
+    transform: scale(0.95);
+}
+
+/* Error message */
+.error-message {
+    margin-top: 15px;
+    color: red;
+    font-size: 14px;
+}
+
+/* Overlay for popup */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none; /* Hidden by default */
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Popup Container */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 300px;
+    padding: 20px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+.popup-content {
+    background-color: #28a745;
+    padding: 20px;
+    border-radius: 5px;
+}
+/* Responsive Design */
+@media (max-width: 480px) {
+    .login-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .form-group input[type="email"],
+    .form-group input[type="password"] {
+        font-size: 12px;
+    }
+
+    .login-button,
+    .signup-button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .form-group.terms {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

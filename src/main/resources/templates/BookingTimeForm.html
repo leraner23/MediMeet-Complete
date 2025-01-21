@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Doctor Appointment Time</title>
+    <link rel="stylesheet" th:href="@{/BookingDoctorStyle.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Select Appointment Time</h1>
+    <form th:action="@{/appointment/bookTime/{userId}(userId=${user.userId})}" method="post">
+        <div class="form-group">
+            <label for="doctor">Doctor:</label>
+            <input type="hidden" name="doctorId" th:value="${doctor.doctorId}">
+            <input type="text" id="doctor" th:value="${doctor.user.fullName}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="date">Appointment Date:</label>
+            <input type="hidden" name="date" th:value="${date}">
+            <input type="text" id="date" th:value="${date}" readonly>
+        </div>
+        <div class="form-group">
+
+            <input type="hidden" name="appointmentId" th:value="${appointmentId}">
+        </div>
+        <div class="form-group">
+            <label for="time">Available Times:</label>
+            <select id="time" name="time" required>
+                <option value="" disabled selected>Select a time</option>
+                <option th:each="time : ${availableTimes}" th:value="${time}" th:text="${time}"></option>
+            </select>
+        </div>
+        <button type="submit" class="submit-btn">Confirm Appointment</button>
+    </form>
+</div>
+</body>
+</html>

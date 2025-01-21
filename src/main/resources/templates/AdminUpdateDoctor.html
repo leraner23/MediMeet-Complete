@@ -1,0 +1,79 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update your Profile </title>
+    <link rel="stylesheet" href="/AdminUpdateDoctorStyle.css">
+    <script th:src="@{/JavaScript/AdminUpdateDoctorScript.js}"></script>
+</head>
+<body>
+<div class="form-container">
+    <h2>Update your profile</h2>
+    <form th:action="@{/doctor/updateDoctorProfile/{userId}/{doctorId}(userId=${user.userId}, doctorId=${doctor.doctorId})}"  th:object="${doctor}" id="UpdateDoctorAdmin" method="post">
+        <label for="fullname">Full Name</label>
+        <input type="text" id="fullname" th:value="${doctor.user.fullName}" readonly>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" th:value="${doctor.user.email}" readonly>
+
+        <label for="age">Age</label>
+        <input type="number" id="age" th:value="${doctor.user.age}" readonly>
+
+        <label for="contact">Contact Number</label>
+        <input type="tel" id="contact" th:value="${doctor.user.contact}" readonly>
+
+        <label for="specialization">Specialization</label>
+        <select id="specialization" th:field="*{specialization}" required>
+            <option value="" disabled selected>Select Specialization</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Neurologist">Neurologist</option>
+            <option value="Dermatologist">Dermatologist</option>
+            <option value="Orthopedic">Orthopedic</option>
+        </select>
+
+        <label for="specialization-description">Specialization Description</label>
+        <textarea id="specialization-description" th:field="*{specializationDescription}" rows="4" placeholder="Write about your specialization..."></textarea>
+
+        <label for="experience">Experience</label>
+        <select id="experience" th:field="*{experience}" required>
+            <option value="" disabled selected>Select Experience</option>
+            <option value="1 year">1 year</option>
+            <option value="2 years">2 years</option>
+            <option value="3 years">3 years</option>
+            <option value="4 years">4 years</option>
+            <option value="more than 4 years"> More than 4 years</option>
+        </select>
+
+        <label for="work-experience">Work Experience</label>
+        <textarea id="work-experience" th:field="*{workExperience}" rows="4" placeholder="Write about your work experience..."></textarea>
+
+        <label for="qualification">Qualification</label>
+        <select id="qualification" th:field="*{qualification}" required>
+            <option value="" disabled selected>Select Qualification</option>
+            <option value="MBBS">MBBS</option>
+            <option value="PHD">PhD</option>
+        </select>
+
+        <label for="qualification-description">Qualification Description</label>
+        <textarea id="qualification-description" th:field="*{qualificationDescription}" rows="4" placeholder="Write about your qualification..."></textarea>
+
+        <label for="awards">Awards</label>
+        <textarea id="awards" th:field="*{awards}" rows="4" placeholder="List your awards and recognitions..."></textarea>
+
+        <label for="schedule-time">OPD Schedule Time</label>
+        <select id="schedule-time" th:field="*{schedule}" required>
+            <option value="" disabled selected>Select Schedule Time</option>
+            <option value="1:30 PM - 4:30 PM">1:30 PM - 5:00 PM</option>
+            <option value="12:00 PM - 3:00 PM">12:00 PM - 3:00 PM</option>
+            <option value="9:00PM - 1:00PM">10:00PM - 1:00PM</option>
+            <option value="9:00PM - 5:00PM">10:00PM - 5:00PM</option>
+        </select>
+
+        <label for="education-training">Education and Training</label>
+        <textarea id="education-training" th:field="*{educationTraining}" rows="4" placeholder="Write about your education and training..."></textarea>
+
+        <button type="submit" >Update</button>
+    </form>
+
+
+</div>
+</body>
+</html>

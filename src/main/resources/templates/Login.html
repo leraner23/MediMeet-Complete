@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" th:href="@{/loginStyle.css}">
+    <script th:src="@{/JavaScript/LoginScript}"></script>
+
+</head>
+<body>
+<div class="login-container">
+    <h2>Login</h2>
+    <form th:action="@{/user/login}" th:object="${loginRequest}" method="post" id="LoginForm">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="terms">
+                <input type="checkbox" id="terms" name="terms" value="accepted" required>
+                I agree to the <a th:href="@{/terms}" target="_blank">Terms and Conditions</a>
+            </label>
+        </div>
+        <button type="submit" class="login-button">Login</button>
+    </form>
+
+
+    <div th:if="${successMessage}" class="success-message" th:text="${successMessage}"></div>
+    <div th:if="${error}" class="error-message" th:text="${error}"></div>
+
+    <!-- Sign Up Button -->
+    <form th:action="@{/user/create_user}" method="get" id="signup">
+        <button type="submit" class="signup-button">Sign Up</button>
+    </form>
+</div>
+
+
+
+</body>
+</html>
+
+

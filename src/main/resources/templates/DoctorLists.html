@@ -1,0 +1,51 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Doctor Lists </title>
+    <link rel="stylesheet" href="/DoctorListsStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+<div th:replace="~{${navbar}}"> </div>
+
+<h2>Doctors Lists</h2>
+<div class="lists">
+    <section  id="doctor-section"  class="doctor-section">
+
+        <div th:if="${doctors.isEmpty()}">
+            <p>No Data of Doctors.</p>
+        </div>
+
+
+        <div th:each="doctor : ${doctors}" class="doctor-card">
+            <div>
+                <div class="profile-image">
+                    <img th:src="@{'/images/'+${doctor.user.profile}}" />
+                </div>
+                <p><strong>Name:</strong> <span th:text="${doctor.user.fullName}"></span></p>
+                <p><strong>Address:</strong> <span th:text="${doctor.user.address}"></span></p>
+                <p><strong>Email:</strong> <span th:text="${doctor.user.email}"></span></p>
+                <p><strong>Age:</strong> <span th:text="${doctor.user.age}"></span></p>
+                <p><strong>Gender:</strong> <span th:text="${doctor.user.gender}"></span></p>
+                <p><strong>Speciality:</strong> <span th:text="${doctor.specialization}"></span></p>
+                <p><strong>Experience:</strong> <span th:text="${doctor.experience}"></span></p>
+                <p><strong>Qualification:</strong> <span th:text="${doctor.qualification}"></span></p>
+
+                <form th:action="@{/doctor/updateDoctorProfile/{userId}/{doctorId}(userId=${user.userId}, doctorId=${doctor.doctorId})}" method="get">
+                    <input type="hidden" name="doctorId" th:value="${doctor.doctorId}"/>
+                    <button class="update" >  <i class="fa-solid fa-user-pen"></i> Update</button>
+                </form>
+
+
+                <form th:action="@{/doctor/userViewProfile}" th:object="${doctors}" method="get">
+                    <input type="hidden" name="doctorId" th:value="${doctor.doctorId}"/>
+                    <button class="view" type="submit"> <i class="fa-regular fa-eye"></i> View Profile</button>
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>

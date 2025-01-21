@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Doctor Profile</title>
+
+    <link rel="stylesheet" th:href="@{/UserViewProfileStyle.css}">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a th:href="@{/}" style="text-decoration: none; color: white;">MediMeet</a>
+        </div>
+        <ul class="nav-links">
+            <li><a th:href="@{/user/login}">Login</a></li>
+            <li><a th:href="@{/appointment/viewBook}">Book an Appointment</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="profile-image">
+    <img th:src="@{'/images/'+${doctor.user.profile}}" />
+</div>
+
+<div class="topic">
+    <h1 th:text="${'Prof. Dr. ' + doctor.user.fullName}"></h1>
+<br>
+
+   <h2 th:text="${ doctor.qualificationDescription}"></h2>
+<br>
+    <h1>OPD Schedule:</h1>
+    <h2 th:text="${doctor.schedule}"></h2>
+<br>
+    <h2 th:text="${ 'Phone Number: ' + doctor.user.contact}"></h2>
+    <br>
+
+    <form class="submit" th:action="@{/appointment/viewBook}">
+<button type="submit"> Book an apppointment </button>
+    </form>
+</div>
+
+<hr>
+
+
+
+<div class="contain">
+<div class="workexperience">
+<h1>Work Experience</h1>
+    <h2 th:text="${doctor.experience}"></h2>
+    <h2 th:text="${ doctor.workExperience}"></h2>
+</div>
+
+    <div class="qualification">
+        <h1>Qualification:</h1>
+        <h2 th:text="${doctor.qualification}"></h2>
+        <h2 th:text="${ doctor.qualificationDescription}"></h2>
+    </div>
+
+
+    <div class="education">
+        <h1>Education and training:</h1>
+        <h2 th:text="${ doctor.educationTraining}"></h2>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Doctor Appointment </title>-->
+<!--    <link rel="stylesheet" th:href="@{/indexStyle.css}">-->
+<!--</head>-->
+<!--<body>-->
+<!--<header>-->
+<!--    <nav class="navbar">-->
+<!--        <div class="logo"> Cikitsakaḥ </div>-->
+<!--        <ul class="nav-links">-->
+<!--            <li><a th:href="@{/}">Home</a></li>-->
+<!--            <li><a href="#doctors"> Find a Doctor</a></li>-->
+<!--            <li><a href="#health-advice">Health Advice</a></li>-->
+<!--            <li><a th:href="@{/user/login}">Login</a></li>-->
+<!--&lt;!&ndash;            <li><a th:href="@{/user/create_user}">Register</a></li>&ndash;&gt;-->
+<!--            <li> <a href="#health-advice"> Book an appointment</a></li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+<!--</header>-->
+
+<!--<main>-->
+<!--    <section class="main">-->
+<!--        <img th:src="@{/staticImages/ddds.jpg}" >-->
+<!--        <img th:src="@{/staticImages/ffsnflksf.jpg}" >-->
+<!--        <img th:src="@{/staticImages/sdsssd.jpg}" >-->
+
+<!--    </section>-->
+
+<!--    <section id="doctors" class="doctors">-->
+<!--        <h2>Meet Our Top Doctors</h2>-->
+<!--        <div class="doctor-cards">-->
+<!--            <div th:each="doctor : ${doctors}" class="doctor-card">-->
+<!--                <div>-->
+<!--                    <div class="profile-image">-->
+<!--                        <img th:src="@{'/images/'+${doctor.user.profile}}" />-->
+<!--                    </div>-->
+<!--                    <p><strong>Name:</strong> <span th:text="${doctor.user.fullName}"></span></p>-->
+<!--                    <p><strong>Address:</strong> <span th:text="${doctor.user.address}"></span></p>-->
+<!--                    <p><strong>Speciality:</strong> <span th:text="${doctor.specialization}"></span></p>-->
+<!--                    <p><strong>Experience:</strong> <span th:text="${doctor.experience}"></span></p>-->
+<!--                    <p><strong>Qualification:</strong> <span th:text="${doctor.qualification}"></span></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    <section id="health-advice" class="health-advice">-->
+<!--        <h2>Health Advice</h2>-->
+<!--        <div th:replace="~{${healthadvice}}"> </div>-->
+<!--    </section>-->
+<!--</main>-->
+
+<!--<footer>-->
+<!--    <p>© 2024 AppointDoctors. Sujan Saru Creater</p>-->
+<!--</footer>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="author" content="Sujan Saru">
+    <title>Doctor Appointment</title>
+    <link rel="stylesheet" th:href="@{/indexStyle.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a th:href="@{/}" class="logo-link">MediMeet</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#doctors">Find a Doctor</a></li>
+            <li><a href="#health-advice">Health Advice</a></li>
+            <li><a th:href="@{/user/login}">Login</a></li>
+            <li><a th:href="@{/appointment/viewBook}">Book an Appointment</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <!-- Image Carousel Section -->
+    <section class="main-carousel">
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img th:src="@{/staticImages/ddds.jpg}" alt="Welcome to Cikitsakaḥ">
+                <div class="carousel-text">Welcome to MediMeet</div>
+            </div>
+            <div class="carousel-slide">
+                <img th:src="@{/staticImages/ffsnflksf.jpg}" alt="Your Health, Our Priority">
+                <div class="carousel-text">Your Health, Our Priority</div>
+            </div>
+            <div class="carousel-slide">
+                <img th:src="@{/staticImages/sdsssd.jpg}" alt="Book an Appointment Now">
+                <div class="carousel-text">Book an Appointment Now</div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" onclick="moveSlide(-1)">
+            <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <button class="carousel-control-next" onclick="moveSlide(1)">
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </section>
+
+    <!-- Doctors Section -->
+    <section id="doctors" class="doctors-section">
+        <h2>Meet Our Specialists</h2>
+        <div class="doctor-cards-container">
+            <div class="doctor-cards">
+                <div th:each="doctor : ${doctors}" class="doctor-card">
+                    <div class="profile-image">
+                        <img th:src="@{'/images/' + ${doctor.user.profile}}" alt="Doctor's Profile">
+                    </div>
+                    <div class="doctor-card-content">
+                        <p><strong>Name:</strong> <span th:text="${doctor.user.fullName}"></span></p>
+                        <p><strong>Speciality:</strong> <span th:text="${doctor.specialization}"></span></p>
+                        <p><strong>Experience:</strong> <span th:text="${doctor.experience}"></span></p>
+                        <p><strong>Qualification:</strong> <span th:text="${doctor.qualification}"></span></p>
+                        <div class="doctor-actions">
+                            <form th:action="@{/appointment/viewBook}" method="get">
+                                <input type="hidden" name="doctorId" th:value="${doctor.doctorId}" />
+                                <button type="submit" class="btn-primary">Book Appointment</button>
+                            </form>
+                            <form th:action="@{/doctor/userViewProfile}" method="get">
+                                <input type="hidden" name="doctorId" th:value="${doctor.doctorId}" />
+                                <button type="submit" class="btn-secondary">
+                                    <i class="fa-regular fa-eye"></i> View Profile
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Advice Section -->
+    <section id="health-advice" class="health-advice-section">
+        <h2>Health Advice</h2>
+        <div th:replace="~{${healthadvice}}"></div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <h2>Testimonials</h2>
+        <div class="testimonial-cards-container">
+            <div class="testimonial-cards">
+                <div th:each="appointment : ${reviews}" class="testimonial-card">
+                    <div class="profile-image">
+                        <img th:src="@{'/images/' + ${appointment.patient.user.profile}}" alt="Patient's Profile">
+                    </div>
+                    <div class="testimonial-content">
+                        <p><strong>Name:</strong> <span th:text="${appointment.patient.user.fullName}"></span></p>
+                        <p><strong>Review:</strong> <span th:text="${appointment.review}"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2024 AppointDoctors. Created by Sujan Saru</p>
+</footer>
+
+<script>
+    // Carousel Functionality
+    let currentSlide = 0;
+
+    function moveSlide(step) {
+        const slides = document.querySelectorAll('.carousel-slide');
+        currentSlide += step;
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+        updateCarousel();
+    }
+
+    function updateCarousel() {
+        const slides = document.querySelectorAll('.carousel-slide');
+        slides.forEach((slide, index) => {
+            slide.style.display = index === currentSlide ? 'block' : 'none';
+        });
+    }
+
+    window.onload = updateCarousel;
+</script>
+</body>
+</html>
