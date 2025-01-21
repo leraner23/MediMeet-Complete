@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: springboot_app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_APPLICATION_NAME: Appointment
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/doctor_appointment
+      SPRING_DATASOURCE_USERNAME: doctor_appointment
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      FILE_UPLOAD_DIR: images
+    volumes:
+      - ./images:/app/images
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: doctor_appointment
+      POSTGRES_USER: doctor_appointment
+      POSTGRES_PASSWORD: root
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
